@@ -63,8 +63,8 @@ set laststatus=2
 "总是显示状态栏
 set encoding=utf-8
 "选择编码
-set langmenu=zh_CN.UTF-8
-language message zh_CN.UTF-8
+"set langmenu=zh_CN.UTF-8
+"language message zh_CN.UTF-8
 "避免windows下gvim菜单和系统提示乱码
 set fileencodings=ucs-bom,utf-8,utf-16,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 "自动识别编码，正确显示中文
@@ -82,12 +82,15 @@ set nowritebackup
 
 "调用pathogen插件
 call pathogen#infect()
+"call pathogen#incubate("after")
 "call pathogen#runtime_append_all_bundles()
 "filetype off
 "syntax on
 "filetype plugin indent on
 
 "设置ctrl+t打开NERDTree插件
+"autocmd VimEnter * NERDTree
+let NERDTreeQuitOnOpen=1
 map <C-t> :NERDTree<CR>
 
 "设置powerline,漂亮的状态栏插件
@@ -118,14 +121,18 @@ if has("gui_running")
     colorscheme blue
 endif
 
-set tags+=~/.vim/systags
+"set tags+=~/.vim/systags
 "Tag-list的配置安装
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags' 
+"let Tlist_Ctags_Cmd='/usr/local/bin/ctags' 
 let Tlist_Show_One_File=1
 let Tlist_Process_File_Always=1
-let Tlist_GainFocus_On_ToggleOpen=1
+"let Tlist_GainFocus_On_ToggleOpen=1
 let Tlist_Exit_OnlyWindow=1
-nnoremap <silent> <F8> :TlistToggle<CR>
+"let Tlist_Auto_Open=1
+let Tlist_Use_Right_Window=1
+"let Tlist_Inc_Winwidth = 0
+let Tlist_WinWidth=30
+"nnoremap <silent> <F8> :TlistToggle<CR>
 
 "cscope设置
 set cscopequickfix=s-,c-,d-,i-,t-,e-
@@ -139,13 +146,20 @@ nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 "miniBuffer 快速浏览插件
-"let g:miniBufExplorerMoreThanOne=1 "只要打开文件就打开窗口
+let g:miniBufExplorerMoreThanOne=1 "只要打开文件就打开窗口
 let g:miniBufExplMapWindowNavVim = 1 "允许hjkl导航
 let g:miniBufExplMapWindowNavArrows = 1 "允许上下左右导航
-let g:miniBufExplMapCTabSwitchBufs = 1 "允许<C-TAB切换buffer>
+"let g:miniBufExplMapCTabSwitchBufs = 1 "允许<C-TAB切换buffer>
 let g:miniBufExplModSelTarget = 1 "若使用其他的explorer的话添加
 let g:miniBufExplForceSyntaxEnable = 1 "不知道干什么的
 let g:miniBufExplCheckDupeBufs = 0 "去除重复缓存名字
+
+"显示buffer在顶端，使用vim-airline
+" Enable the list of buffers
+"let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+"let g:airline#extensions#tabline#fnamemod = ':t'
+
 
 "grep插件 在工程中查找
 nnoremap <silent> <F3> :Grep<CR>
@@ -156,7 +170,6 @@ nnoremap <silent> <F3> :Grep<CR>
 filetype plugin on
 
 "echofunc plugin
-let g:EchoFuncShowOnStatus = 1
-set statusline=%<%F%1*%m%*%r%y%=%b\ 0x%B\ \ [l,c]%l,%c%V\ %p%%\ %{EchoFuncGetStatusLine()}
-
+"let g:EchoFuncShowOnStatus = 1
+"set statusline=%<%F%1*%m%*%r%y%=%b\ 0x%B\ \ [l,c]%l,%c%V\ %p%%\ %{EchoFuncGetStatusLine()}
 

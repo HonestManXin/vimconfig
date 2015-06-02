@@ -160,6 +160,8 @@ let g:miniBufExplCheckDupeBufs = 0 "去除重复缓存名字
 " Show just the filename
 "let g:airline#extensions#tabline#fnamemod = ':t'
 
+"clang
+let g:clang_library_path='/usr/lib/llvm-3.4/lib/' 
 
 "grep插件 在工程中查找
 nnoremap <silent> <F3> :Grep<CR>
